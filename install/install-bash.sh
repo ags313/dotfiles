@@ -17,5 +17,14 @@ function installBashThings
   done  
 }
 
+function install-z
+{
+  md ~/vcs/misc
+  if [[ ! -d ~/vcs/misc/z ]]; then
+    git clone git://github.com/rupa/z.git ~/vcs/misc/z
+  fi
+}
+
 installBashThings
+install-z
 
