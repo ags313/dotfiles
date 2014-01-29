@@ -1,0 +1,36 @@
+[alias]
+  lg1 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'     --abbrev-commit --date=relative
+  lg2 = log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  filelog = log -u
+  fl = log -u
+  st = status
+  co = checkout
+  dr  = "!f() { git diff "$1"^.."$1"; }; f"
+  lc  = "!f() { git ll "$1"^.."$1"; }; f"
+  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+  lasttag = describe --tags --abbrev=0
+  lt = describe --tags --abbrev=0
+  app = add --patch
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[user]
+  name = Andrzej Grzesik
+  email = andrzej.grzesik@gmail.com
+[merge]
+  keepBackup = false;
+[core]
+  editor = vim
+  whitespace = trailing-space,space-before-tab
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+[push]
+  default = tracking
+[branch]
+  autosetuprebase = always
+  autosetupmerge = true
