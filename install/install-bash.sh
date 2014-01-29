@@ -19,7 +19,7 @@ function installBashThings
 
 function install-z
 {
-  md ~/vcs/misc
+  mkdir -p ~/vcs/misc
   if [[ ! -d ~/vcs/misc/z ]]; then
     git clone git://github.com/rupa/z.git ~/vcs/misc/z
   fi

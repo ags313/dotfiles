@@ -33,6 +33,5 @@ alias mroe=more
 
 alias g="gedit $*"
 alias mkdir='mkdir -p'
-alias md='mkdir'
 
 

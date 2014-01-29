@@ -15,7 +15,6 @@ function installSingleMaven
 	
 	if [[ -d $opt/tools/$binaryName ]]
 	then
-		echo "maven $1 already installed"
 		return 0
 	fi
 
