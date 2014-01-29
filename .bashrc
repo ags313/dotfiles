@@ -86,25 +86,20 @@ export PATH=/usr/local/mysql/bin:$PATH
 export PATH=/usr/local/git/bin:$PATH
 export PATH=$PATH:$HOME/bin
 
-export DOWNLOADS=~/Downloads
-export opt=~/opt
-
-export ANDROID_HOME=~/opt/sdk/android-sdk
-export ANDROID_NDK_HOME=~/opt/sdk/android-ndk
-
 if [[ -f /opt/vagrant/bin/vagrant ]]; then
     export PATH=/opt/vagrant/bin:$PATH
 fi
 
+source $HOME/bash/git-prompt.sh
 source $HOME/scripts/functions.sh
 source $HOME/scripts/runtime.sh
-# source $HOME/scripts/install.sh
+
 
 export HISTIGNORE='&:cd:ls:bin/ss;history *'
 
 GIT_PS1_SHOWDIRTYSTATE=true
 
-export MAVEN_OPTS="-Xmx512M -XX:MaxPermSize=512M"
+
 
 # Load RVM into a shell session *as a function*
 if [[ -f "/usr/local/rvm/scripts/rvm" ]]; then
@@ -118,6 +113,8 @@ source ~/vcs/misc/z/z.sh
 resetPrompt
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 export ANDROID_HOME=~/opt/sdk/android-sdk
 export ANDROID_NDK_HOME=~/opt/sdk/android-sdk
 
+export MAVEN_OPTS="-Xmx512M -XX:MaxPermSize=512M"
