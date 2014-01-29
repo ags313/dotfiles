@@ -1,11 +1,12 @@
 #!/bin/bash
 
 mkdir -p ~/opt/sdk
+mkdir -p ~/vcs/tools
 
 function install-android-sdk-linux
 {
   arch=android-sdk_r22.3-linux.tgz
-  download $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
+  wget -O $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
   tar xf $DOWNLOADS/${arch}
   mv android-sdk-linux $opt/sdk/android-sdk-linux-r22
   ln -snf $opt/sdk/android-sdk-linux-r22 $opt/sdk/android-sdk
@@ -20,7 +21,7 @@ function install-android-sdk-linux
 function install-android-sdk-osx
 {
   arch=android-sdk_r22.3-macosx.zip
-  download $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
+  wget -O $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
   unzip $DOWNLOADS/${arch} -d $DOWNLOADS/dev
   mv -d $DOWNLOADS/dev/android-sdk-macosx $opt/sdk/android-sdk-macosx-r22
   ln -snf $opt/sdk/android-sdk-macosx-r22 $opt/sdk/android-sdk
@@ -28,25 +29,24 @@ function install-android-sdk-osx
 
 function install-android-ndk-linux
 {
-  download $DOWNLOADS/android-ndk-r9c-linux-x86.tar.bz2 http://dl.google.com/android/ndk/android-ndk-r9c-linux-x86_64.tar.bz2
-  tar xjf $DOWNLOADS/android-ndk-r9c-linux-x86.tar.bz2
+  arch=android-ndk-r9c-linux-x86_64.tar.bz2
+  wget -O $DOWNLOADS/dev/${arch} http://dl.google.com/android/ndk/${arch}
+  tar xf $DOWNLOADS/dev/${arch}
   mv android-ndk-r9c $opt/sdk/android-ndk-linux-r9c
   ln -snf $opt/sdk/android-ndk-linux-r9c $opt/sdk/android-ndk
 }
 
 function install-android-ndk-osx
 {
-  download $DOWNLOADS/android-ndk-r8-darwin-x86.tar.bz2 http://dl.google.com/android/ndk/android-ndk-r8-darwin-x86.tar.bz2
-  tar xjf $DOWNLOADS/android-ndk-r8-darwin-x86.tar.bz2
-  mv android-ndk-r8 $opt/sdk/android-ndk-r8-macosx
+  arch=android-ndk-r9c-darwin-x86_64.tar.bz2
+  wget -O $DOWNLOADS/dev/${arch} http://dl.google.com/android/ndk/${arch}
+  tar xf $DOWNLOADS/dev/${arch}
+  mv android-ndk-r9c $opt/sdk/android-ndk-r9c-macosx
   ln -snf $opt/sdk/android-ndk-linux-r8 $opt/sdk/android-ndk
 }
 
 function install-android-sdk
 {
-  echo 'export ANDROID_HOME=~/opt/sdk/android-sdk' >> ~/.bashrc
-  echo "" >> ~/.bashrc
-  
   if [[ -L "$opt/sdk/android-sdk" ]]; then
     echo "  SDK is already installed"
     return 0;
@@ -65,19 +65,10 @@ function install-android-sdk
   if [[ ! -L ~/bin/android ]]; then
     ln -s $opt/sdk/android-sdk/tools/android ~/bin/android
   fi
-  
-  for (( i = 0; i < 50; i++ )); do
-    echo "" >> /tmp/input
-  done
-
-# $opt/sdk/android-sdk/tools/android -s update sdk --no-ui --obsolete --force < /tmp/input
 }
 
 function install-android-ndk
 {
-  echo 'export ANDROID_NDK_HOME=~/opt/sdk/android-sdk' >> ~/.bashrc
-  echo "" >> ~/.bashrc 
-
   if [[ -L "$opt/sdk/android-ndk" ]]; then
     echo "  NDK is already installed"
     return
@@ -96,9 +87,8 @@ function install-android-ndk
 
 function install-maven-android-sdk-deployer
 {
-  md ~/vcs/misc
   if [[ ! -d ~/vcs/misc/maven-android-sdk-deployer ]]; then
-    git clone git://github.com/mosabua/maven-android-sdk-deployer.git ~/vcs/misc/maven-android-sdk-deployer
+    git clone git://github.com/mosabua/maven-android-sdk-deployer.git ~/vcs/tools/maven-android-sdk-deployer
   fi
 }
 
