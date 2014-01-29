@@ -1,6 +1,7 @@
 #!/bin/bash
-mkdir -p ~/bash
-mkdir -p ~/scripts
+mkdir -p "$HOME/bash"
+mkdir -p "$HOME/scripts"
+mkdir -p "$HOME/vcs/misc"
 
 function installBashThings
 {
@@ -19,7 +20,6 @@ function installBashThings
 
 function install-z
 {
-  mkdir -p ~/vcs/misc
   if [[ ! -d ~/vcs/misc/z ]]; then
     git clone git://github.com/rupa/z.git ~/vcs/misc/z
   fi

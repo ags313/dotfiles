@@ -1,13 +1,13 @@
 #!/bin/bash
 
-mkdir -p ~/opt/sdk
-mkdir -p ~/vcs/tools
+mkdir -p "$HOME/opt/sdk"
+mkdir -p "$HOME/vcs/tools"
 
 function install-android-sdk-linux
 {
   arch=android-sdk_r22.3-linux.tgz
-  wget -O $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
-  tar xf $DOWNLOADS/${arch}
+  wget -O "$DOWNLOADS/dev/${arch}" "http://dl.google.com/android/${arch}"
+  tar xf "$DOWNLOADS/dev/${arch}"
   mv android-sdk-linux $opt/sdk/android-sdk-linux-r22
   ln -snf $opt/sdk/android-sdk-linux-r22 $opt/sdk/android-sdk
 
@@ -21,8 +21,8 @@ function install-android-sdk-linux
 function install-android-sdk-osx
 {
   arch=android-sdk_r22.3-macosx.zip
-  wget -O $DOWNLOADS/${arch} http://dl.google.com/android/${arch}
-  unzip $DOWNLOADS/${arch} -d $DOWNLOADS/dev
+  wget -O $DOWNLOADS/dev/${arch} http://dl.google.com/android/${arch}
+  unzip $DOWNLOADS/dev/${arch} -d $DOWNLOADS/dev
   mv -d $DOWNLOADS/dev/android-sdk-macosx $opt/sdk/android-sdk-macosx-r22
   ln -snf $opt/sdk/android-sdk-macosx-r22 $opt/sdk/android-sdk
 }
