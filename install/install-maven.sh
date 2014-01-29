@@ -7,23 +7,27 @@ function installSingleMaven
 		return 0
 	fi		
 	
-	archiveName=apache-maven-$1-bin.tar.gz
+  archiveName=apache-maven-$1-bin.tar.gz
 	binaryName=apache-maven-$1
     url=$2
 	
-	if [[ ! -d $opt/tools/$binaryName ]]
+	if [[ -d $opt/tools/$binaryName ]]
 	then
-		echo "Installing Maven $1"
-		if [[ ! -f $DOWNLOADS/dev/$archiveName ]]
-		then
-			wget $url -O $DOWNLOADS/dev/$archiveName
-		fi
-		
-		tar xf $DOWNLOADS/dev/$archiveName
-		mkdir -p $opt/tools
-		mv $binaryName $opt/tools/
-		echo "Maven $1 installed"
+		echo "maven $1 already installed"
+		return 0
 	fi
+
+	echo "Installing Maven $1"
+	if [[ ! -f $DOWNLOADS/dev/$archiveName ]]
+	then
+		wget $url -O $DOWNLOADS/dev/$archiveName
+	fi
+	
+	tar xf $DOWNLOADS/dev/$archiveName
+	mkdir -p $opt/tools
+	mv $binaryName $opt/tools/
+	echo "Maven $1 installed"
+
 }
 
 function setDefaultMaven

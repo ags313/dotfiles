@@ -13,7 +13,7 @@ function safeInstall()
     if [[ `diff $1 $2` ]]; then
       backup $2
     else
-#     echo "$1 is same as $2"
+  #     echo "$1 is same as $2"
       return 0;
     fi
   fi

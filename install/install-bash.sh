@@ -1,15 +1,20 @@
 #!/bin/bash
 mkdir -p ~/bash
+mkdir -p ~/scripts
 
 function installBashThings
 {
-	safeInstall .bashrc ~/.bashrc
-	safeInstall .bash_profile ~/.bash_profile
-	safeInstall .dircolors ~/.dircolors
+  safeInstall .bashrc ~/.bashrc
+  safeInstall .bash_profile ~/.bash_profile
+  safeInstall .dircolors ~/.dircolors
 
-	for file in bash/*; do
-		safeInstall $file ~/bash/$file
-	done
+  for file in bash/*; do
+    safeInstall $file ~/$file
+  done
+
+  for file in scripts/*; do
+    safeInstall $file ~/$file
+  done  
 }
 
 installBashThings

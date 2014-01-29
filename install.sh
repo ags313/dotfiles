@@ -1,11 +1,13 @@
 #!/bin/bash
 pushd .
 
-mkdir -p ~/downloads/chrome
-mkdir -p ~/downloads/dev
-mkdir -p ~/vcs/misc
-
+export opt="~/opt"
 export DOWNLOADS="~/downloads"
+
+mkdir -p $opt/tools
+mkdir -p $DOWNLOADS/chrome
+mkdir -p $DOWNLOADS/dev
+mkdir -p ~/vcs/misc
 
 source install/install-functions.sh
 . install/install-bash.sh
