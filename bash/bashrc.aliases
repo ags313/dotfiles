@@ -1,0 +1,38 @@
+######
+#
+# .bashrc aliases
+#
+#####
+
+#aliases
+case `uname` in
+	Darwin*) alias ls='ls -F' ;;
+	*) alias ls='ls -F --color=auto' ;;
+esac
+
+alias ll='ls -lF'
+alias la='ls -alF'
+alias h='history'
+alias ff="find . -name $1"
+
+alias ".."="cd .."
+alias "..."="cd ../.."
+alias "...."="cd ../../.."
+alias "....."="cd ../../../.."
+alias "......"="cd ../../../../../.."
+
+alias more=less
+alias m=more
+
+# typos
+alias maek='make'
+alias alais='alias'
+alias csl='clear'
+alias sl='ls --color'
+alias mroe=more
+
+alias g="gedit $*"
+alias mkdir='mkdir -p'
+alias md='mkdir'
+
+

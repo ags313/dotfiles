@@ -1,0 +1,93 @@
+######
+#
+# .bashrc completion
+#
+#####
+
+#completes
+
+shopt -s extglob progcomp cdspell
+
+# Make directory commands see only directories
+complete -d cd mkdir rmdir pushd jd
+
+# Make file commands see only files
+complete -f cat less more chown ln strip nedit emacs
+
+complete -f -X '!*.@(zip|ZIP|jar|JAR|exe|EXE|pk3|war|wsz|ear|zargo|xpi)' unzip zipinfo
+complete -f -X '*.Z' compress
+complete -f -X '!*.@(Z|gz|tgz|Gz|dz|bz2)' gunzip zcmp zdiff zcat zegrep zfgrep zgrep zless zmore tar
+complete -f -X '!*.Z' uncompress
+complete -f -X '!*.@(gif|jp?(e)g|tif?(f)|pn[gm]|p[bgp]m|bmp|xpm|ico|xwd|tga|pcx|GIF|JP?(E)G|TIF?(F)|PN[GM]|P[BGP]M|BMP|XPM|ICO|XWD|TGA|PCX)' ee display
+complete -f -X '!*.@(gif|jp?(e)g|tif?(f)|png|p[bgp]m|bmp|x[bp]m|rle|rgb|pcx|fits|pm|GIF|JPG|JP?(E)G|TIF?(F)|PNG|P[BGP]M|BMP|X[BP]M|RLE|RGB|PCX|FITS|PM)' xv qiv
+complete -f -X '!*.@(ps|PS)' gv ggv
+complete -f -X '!*.@(ps|PS|pdf|PDF)' fmerge
+complete -f -X '!*.@(dvi|DVI)?(.@(gz|Z|bz2))' xdvi
+complete -f -X '!*.@(dvi|DVI)' dvips dviselect dvitype
+complete -f -X '!*.@(pdf|PDF)' acroread gpdf xpdf
+complete -f -X '!*.texi*' makeinfo texi2html
+complete -f -X '!*.@(?(la)tex|?(LA)TEX|texi|TEXI|dtx|DTX|ins|INS)' tex latex slitex jadetex pdfjadetex pdftex pdflatex texi2dvi
+complete -f -X '!*.fig' xfig
+complete -f -X '!*.@(?([xX]|[sS])[hH][tT][mM]?([lL]))' netscape mozilla lynx appletviewer hotjava
+# complete -f -X '!*.tar' tar
+complete -f -X '!*.java' javac
+complete -f -X '!*.idl' idl idlj
+
+# user commands see only users
+complete -u su usermod userdel passwd write groups w talk
+
+# bg completes with stopped jobs
+complete -A stopped -P '%' bg
+
+# other job commands
+complete -j -P '%' fg jobs disown
+
+# readonly and unset complete with shell variables
+complete -v readonly unset
+
+# set completes with set options
+complete -A setopt set
+
+# shopt completes with shopt options
+complete -A shopt shopt
+
+# unalias completes with aliases
+complete -a unalias
+
+# type and which complete on commands
+complete -c command type which
+
+# complete hostnames
+complete -A hostname ssh telnet rlogin ftp ping traceroute
+
+# bind "\e[A": history-search-backward
+# bind "\e[B": history-search-forward
+# set completion-ignore-case on
+
+bind 'set match-hidden-files on' 
+set show-all-if-ambiguous on
+set cdable_vars
+
+
+# Do autocorrection while completing...
+# It does some very rudimentary corrections. I was not disatisfied yet.
+# Try:
+# % cd /usr/loca/bin<TAB>
+# % cd /usr/local/bin     <- you get
+set autocorrect
+
+# Use the history of commands to aid expansion.
+# Found in new versions of bash (at least 6.10)
+set autoexpand
+
+# Enabled "complete" to "enhance".
+# If you have a file called "complete.bash" and you
+# want to edit it, do "vi c.t<TAB>" and that's it.
+set complete=enhance
+
+# Possible values : cmd complete all
+# Put it to extreme auto.
+set correct=all
+
+# After a 'Ctrl-Z', it lists all the jobs.
+set listjobs
