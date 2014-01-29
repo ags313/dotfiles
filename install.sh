@@ -1,10 +1,9 @@
 #!/bin/bash
 pushd .
 
-cd ~
-mkdir -p downloads/chrome
-mkdir -p downloads/dev
-mkdir -p vcs/misc
+mkdir -p ~/downloads/chrome
+mkdir -p ~/downloads/dev
+mkdir -p ~/vcs/misc
 
 export DOWNLOADS="~/downloads"
 
