@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p $opt/tools
+
 function installSingleMaven
 {
 	if [ -e "$1" ]
@@ -9,7 +11,7 @@ function installSingleMaven
 	
   archiveName=apache-maven-$1-bin.tar.gz
 	binaryName=apache-maven-$1
-    url=$2
+  url=$2
 	
 	if [[ -d $opt/tools/$binaryName ]]
 	then
@@ -24,10 +26,8 @@ function installSingleMaven
 	fi
 	
 	tar xf $DOWNLOADS/dev/$archiveName
-	mkdir -p $opt/tools
 	mv $binaryName $opt/tools/
 	echo "Maven $1 installed"
-
 }
 
 function setDefaultMaven
@@ -66,6 +66,6 @@ function installCompletion
 
 # installSingleMaven 2.0.11
 # installSingleMaven 2.2.1 http://www.us.apache.org/dist/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.tar.gz
-installSingleMaven 3.0.4 http://www.eu.apache.org/dist/maven/maven-3/3.0.4/binaries/apache-maven-3.0.4-bin.tar.gz
+installSingleMaven 3.0.5 http://www.eu.apache.org/dist/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
 installSingleMaven 3.1.1 http://www.eu.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
 setDefaultMaven 3.1.1
